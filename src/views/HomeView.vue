@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/Download.jpg">
+    <img alt="MSGI Logo" src="../assets/MSGI-Logo.jpg" width="200" height="auto">
     <HelloWorld msg="MSGI"/>
   </div>
 </template>
