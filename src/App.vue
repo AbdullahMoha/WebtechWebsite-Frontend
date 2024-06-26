@@ -22,6 +22,7 @@ export default {
     }
   },
   mounted () {
+    console.log(`Fetching data from ${process.env.VUE_APP_BACKEND_URL}/api/data`)
     fetch(`${process.env.VUE_APP_BACKEND_URL}/api/data`)
       .then((response) => response.json())
       .then((data) => {
