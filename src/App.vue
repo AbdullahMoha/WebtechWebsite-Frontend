@@ -1,6 +1,11 @@
 <template>
-  <navbar></navbar>
-  <router-view/>
+  <div id="app">
+    <navbar></navbar>
+    <h1>Data from Backend:</h1>
+    <p v-if="data">{{ data.message }}</p>
+    <p v-else>Loading...</p>
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -9,7 +14,24 @@ import Navbar from '@/components/Navbar.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'App',
-  components: { Navbar }
+  components: {
+    Navbar
+  },
+  data () {
+    return {
+      data: null
+    }
+  },
+  mounted () {
+    fetch(`${process.env.VUE_APP_BACKEND_URL}/api/data`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.data = data
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }
 }
 </script>
 
