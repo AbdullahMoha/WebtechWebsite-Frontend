@@ -26,14 +26,13 @@ export default {
     fetch(`${process.env.VUE_APP_BACKEND_URL}/api/data`)
       .then((response) => response.json())
       .then((data) => {
-        this.data = data
+        this.data = data.message
       })
       .catch((error) => {
         console.error('Error fetching data:', error)
       })
   }
-}
-</script>
+}</script>
 
 <style>
 #app {
