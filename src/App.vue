@@ -1,19 +1,17 @@
 <template>
   <div id="app">
-    <navbar></navbar>
-    <BeitragB></BeitragB>
-    <router-view/>
+    <Navbar />
+    <router-view />
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue'
-import BeitragB from '@/components/BeitragB.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar, BeitragB
+    Navbar
   },
   data () {
     return {

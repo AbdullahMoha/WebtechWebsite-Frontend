@@ -1,3 +1,11 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../components/Home.vue';
+import Favorites from '../components/Favorites.vue';
+import Filme from '../components/Filme.vue';
+import Serien from '../components/Serien.vue';
+import Spiele from '../components/Spiele.vue';
+
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -25,10 +33,6 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Hier Suchen..." aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Start</button>
-        </form>
       </div>
     </div>
   </nav>

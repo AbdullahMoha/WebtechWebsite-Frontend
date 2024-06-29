@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="MSGI Logo" src="../assets/MSGI-Logo.jpg" width="200" height="auto">
+    <img alt="" src="" width="200" height="auto">
     <HelloWorld msg=""/>
   </div>
 </template>
@@ -19,8 +19,10 @@ export default {
 
 <style scoped>
 .home {
-  position: relative;
-  top: -80px; /* Passe diesen Wert an, um die vertikale Position zu ändern */
-  left: 20px; /* Passe diesen Wert an, um die horizontale Position zu ändern */
+  position: fixed;
+  top: 100px; /* Abstand von oben */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Stellt sicher, dass das Logo über anderen Elementen liegt */
 }
 </style>
