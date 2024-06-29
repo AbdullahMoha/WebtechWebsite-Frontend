@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width,: 10rem;">
+  <div class="card" style="width: 10rem;">
     <img src="../assets/Borderlands.png" class="card-img-top" alt="...">
     <div class="card-body">
       <p class="card-text">Borderlands</p>
