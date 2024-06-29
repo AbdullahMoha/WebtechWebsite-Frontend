@@ -1,20 +1,19 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <h1>Data from Backend:</h1>
-    <p v-if="data">{{ data.message }}</p>
-    <p v-else>Loading...</p>
+    <BeitragB></BeitragB>
     <router-view/>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue'
+import BeitragB from '@/components/BeitragB.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar, BeitragB
   },
   data () {
     return {
@@ -32,7 +31,8 @@ export default {
         console.error('Error fetching data:', error)
       })
   }
-}</script>
+}
+</script>
 
 <style>
 #app {
