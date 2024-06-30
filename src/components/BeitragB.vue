@@ -5,44 +5,14 @@
     </div>
     <div class="row-container">
       <div class="fard-container">
-        <div class="fard">
-          <img src="../assets/ToTheMoon.png" class="card-img-top" alt="To The Moon">
+        <div class="fard" v-for="(movie, index) in movies" :key="index">
+          <img :src="getImgSrc(movie.imgSrc)" class="card-img-top" :alt="movie.title">
           <div class="card-body">
-            <h5 class="card-title">To The Moon</h5>
-            <p class="card-text">11. Juli 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="fard">
-          <img src="../assets/Borderlands.png" class="card-img-top" alt="Borderlands">
-          <div class="card-body">
-            <h5 class="card-title">Borderlands</h5>
-            <p class="card-text">22. August 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="fard">
-          <img src="../assets/FührerUndVerführer.png" class="card-img-top" alt="AllesFiftyFifty">
-          <div class="card-body">
-            <h5 class="card-title">Alles Fifty Fifty</h5>
-            <p class="card-text">29. August 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="fard">
-          <img src="../assets/AllesFiftyFifty.jpg" class="card-img-top" alt="AllesFiftyFifty">
-          <div class="card-body">
-            <h5 class="card-title">Führer und Verführer</h5>
-            <p class="card-text">11. Juli 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="fard">
-          <img src="../assets/ZweiZuEins.png" class="card-img-top" alt="Zwei zu Eins">
-          <div class="card-body">
-            <h5 class="card-title">Zwei zu Eins</h5>
-            <p class="card-text">25. Juli 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.date }}</p>
+            <button @click="toggleFavorite(movie)" :class="['btn', isFavorite(movie) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite(movie) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
       </div>
@@ -54,7 +24,9 @@
           <div class="card-body">
             <h5 class="card-title">Arcane Staffel 2</h5>
             <p class="card-text">November 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <button @click="toggleFavorite({ title: 'Arcane Staffel 2', date: 'November 2024', imgSrc: 'Arcane.jpg' })" :class="['btn', isFavorite({ title: 'Arcane Staffel 2' }) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite({ title: 'Arcane Staffel 2' }) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
         <div class="card">
@@ -62,7 +34,9 @@
           <div class="card-body">
             <h5 class="card-title">Der Herr der Ringe: Die Ringe der Macht</h5>
             <p class="card-text">29. August 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <button @click="toggleFavorite({ title: 'Der Herr der Ringe: Die Ringe der Macht', date: '29. August 2024', imgSrc: 'DerHerrDerRingeStaffel2.png' })" :class="['btn', isFavorite({ title: 'Der Herr der Ringe: Die Ringe der Macht' }) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite({ title: 'Der Herr der Ringe: Die Ringe der Macht' }) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
         <div class="card">
@@ -70,7 +44,9 @@
           <div class="card-body">
             <h5 class="card-title">HouseOfTheDragon Staffel 2</h5>
             <p class="card-text">21. August 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <button @click="toggleFavorite({ title: 'HouseOfTheDragon Staffel 2', date: '21. August 2024', imgSrc: 'HouseOfTheDragon.jpg' })" :class="['btn', isFavorite({ title: 'HouseOfTheDragon Staffel 2' }) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite({ title: 'HouseOfTheDragon Staffel 2' }) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
         <div class="card">
@@ -78,7 +54,9 @@
           <div class="card-body">
             <h5 class="card-title">Squid Game Staffel 2</h5>
             <p class="card-text">Dezember 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <button @click="toggleFavorite({ title: 'Squid Game Staffel 2', date: 'Dezember 2024', imgSrc: 'SquidGameStaffel2.jpg' })" :class="['btn', isFavorite({ title: 'Squid Game Staffel 2' }) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite({ title: 'Squid Game Staffel 2' }) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
         <div class="card">
@@ -86,51 +64,23 @@
           <div class="card-body">
             <h5 class="card-title">Agatha All Along</h5>
             <p class="card-text">18. September 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <button @click="toggleFavorite({ title: 'Agatha All Along', date: '18. September 2024', imgSrc: 'AgathaAllAlong.jpg' })" :class="['btn', isFavorite({ title: 'Agatha All Along' }) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite({ title: 'Agatha All Along' }) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div class="row-container">
       <div class="gard-container">
-        <div class="gard">
-          <img src="../assets/black-myth-wukong-jjjfw.png" class="card-img-top" alt="Black Myth: Wukong">
+        <div class="gard" v-for="(game, index) in games" :key="index">
+          <img :src="getImgSrc(game.imgSrc)" class="card-img-top" :alt="game.title">
           <div class="card-body">
-            <h5 class="card-title">Black Myth: Wukong</h5>
-            <p class="card-text">20. August 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="gard">
-          <img src="../assets/silent-hill-2-remake_gjje.jpg" class="card-img-top" alt="Silent Hill 2 Remake">
-          <div class="card-body">
-            <h5 class="card-title">Silent Hill 2 Remake</h5>
-            <p class="card-text"> 8. Oktober 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="gard">
-          <img src="../assets/stalker-md.jpg" class="card-img-top" alt="Stalker 2">
-          <div class="card-body">
-            <h5 class="card-title">Stalker 2</h5>
-            <p class="card-text">5. September 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="gard">
-          <img src="../assets/Mario&Luigi_Brothership.jpg" class="card-img-top" alt="Mario & Luigi: Brothership">
-          <div class="card-body">
-            <h5 class="card-title">Mario & Luigi: Brothership</h5>
-            <p class="card-text">7. November 2024</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
-          </div>
-        </div>
-        <div class="gard">
-          <img src="../assets/Grand_Theft_Auto_VI.png" class="card-img-top" alt="Grand Theft Auto VI">
-          <div class="card-body">
-            <h5 class="card-title">Grand Theft Auto VI</h5>
-            <p class="card-text">Herbst 2025</p>
-            <a href="#" class="btn btn-primary">Favorisieren</a>
+            <h5 class="card-title">{{ game.title }}</h5>
+            <p class="card-text">{{ game.date }}</p>
+            <button @click="toggleFavorite(game)" :class="['btn', isFavorite(game) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite(game) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
           </div>
         </div>
       </div>
@@ -144,27 +94,34 @@ export default {
   data () {
     return {
       movies: [
-        { title: 'To The Moon', date: '11. Juli 2024', imgSrc: '../assets/ToTheMoon.png' },
-        { title: 'Borderlands', date: '22. August 2024', imgSrc: '../assets/Borderlands.png' },
-        { title: 'Alles Fifty Fifty', date: '29. August 2024', imgSrc: '../assets/FührerUndVerführer.png' },
-        { title: 'Führer und Verführer', date: '11. Juli 2024', imgSrc: '../assets/AllesFiftyFifty.jpg' },
-        { title: 'Zwei zu Eins', date: '25. Juli 2024', imgSrc: '../assets/ZweiZuEins.png' }
+        { title: 'To The Moon', date: '11. Juli 2024', imgSrc: 'ToTheMoon.png' },
+        { title: 'Borderlands', date: '22. August 2024', imgSrc: 'Borderlands.png' },
+        { title: 'Alles Fifty Fifty', date: '29. August 2024', imgSrc: 'FührerUndVerführer.png' },
+        { title: 'Führer und Verführer', date: '11. Juli 2024', imgSrc: 'AllesFiftyFifty.jpg' },
+        { title: 'Zwei zu Eins', date: '25. Juli 2024', imgSrc: 'ZweiZuEins.png' }
+      ],
+      games: [
+        { title: 'Black Myth: Wukong', date: '20. August 2024', imgSrc: 'black-myth-wukong-jjjfw.png' },
+        { title: 'Silent Hill 2 Remake', date: '8. Oktober 2024', imgSrc: 'silent-hill-2-remake_gjje.jpg' },
+        { title: 'Stalker 2', date: '5. September 2024', imgSrc: 'stalker-md.jpg' },
+        { title: 'Mario & Luigi: Brothership', date: '7. November 2024', imgSrc: 'Mario&Luigi_Brothership.jpg' },
+        { title: 'Grand Theft Auto VI', date: 'Herbst 2025', imgSrc: 'Grand_Theft_Auto_VI.png' }
       ],
       favorites: []
     }
   },
   methods: {
-    toggleFavorite (movie) {
-      const index = this.favorites.findIndex(fav => fav.title === movie.title)
+    toggleFavorite (item) {
+      const index = this.favorites.findIndex(fav => fav.title === item.title)
       if (index === -1) {
-        this.favorites.push(movie)
+        this.favorites.push(item)
       } else {
         this.favorites.splice(index, 1)
       }
       this.saveFavorites()
     },
-    isFavorite (movie) {
-      return this.favorites.some(fav => fav.title === movie.title)
+    isFavorite (item) {
+      return this.favorites.some(fav => fav.title === item.title)
     },
     saveFavorites () {
       localStorage.setItem('favorites', JSON.stringify(this.favorites))
@@ -173,6 +130,14 @@ export default {
       const favorites = localStorage.getItem('favorites')
       if (favorites) {
         this.favorites = JSON.parse(favorites)
+      }
+    },
+    getImgSrc (imgSrc) {
+      try {
+        return require(`../assets/${imgSrc}`)
+      } catch (e) {
+        console.error(`Error loading image: ${imgSrc}`, e)
+        return ''
       }
     }
   },
@@ -239,9 +204,9 @@ body {
   border-color: #004085; /* Randfarbe der Schaltfläche beim Hover */
 }
 
- .btn-primary {
-   background-color: #ffd700; /* Gelbe Hintergrundfarbe */
-   border-color: #ffd700; /* Gelbe Randfarbe */
-   color: #333; /* Dunkle Textfarbe */
- }
+.btn-primary {
+  background-color: #ffd700; /* Gelbe Hintergrundfarbe */
+  border-color: #ffd700; /* Gelbe Randfarbe */
+  color: #333; /* Dunkle Textfarbe */
+}
 </style>
