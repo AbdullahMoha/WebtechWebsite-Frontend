@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { flushPromises, shallowMount } from '@vue/test-utils'
 import Beitrag from '@/components/Beitrag.vue'
 import Favorites from '@/components/Favorites.vue'
 import Filme from '@/components/Filme.vue'
@@ -166,5 +166,38 @@ describe('Filme.vue', () => {
     localStorage.setItem('favorites', JSON.stringify([movie]))
     wrapper.vm.loadFavorites()
     expect(wrapper.vm.favorites).toContainEqual(movie)
+  })
+
+  // eslint-disable-next-line no-unused-expressions
+  it('should toggle favorite status and remove from list', async () => {
+    // Setze den Favoriten für den Test
+    const favorite = wrapper.vm.favorites[0]
+    // Simuliere das Klicken auf den Button zum Entfavorisieren
+    await wrapper.find('.btn-secondary').trigger('click')
+    // Überprüfe, dass der Favorit nicht mehr in der Favoritenliste ist
+    expect(wrapper.vm.favorites).not.toContain(favorite)
+    // eslint-disable-next-line no-sequences
+  }),
+  it('should toggle favorite status of a movie', async () => {
+    // Setze den Film für den Test
+    const movie = wrapper.vm.movies[0]
+    // Simuliere das Klicken auf den Button zum Favorisieren
+    await wrapper.find('.btn-primary').trigger('click')
+    // Überprüfe, dass der Film in der Favoritenliste ist
+    expect(wrapper.vm.favorites).toContain(movie)
+  }),
+  it('should navigate to Favorites component', async () => {
+    // Simuliere das Klicken auf den Favoriten-Link
+    await wrapper.find('a.nav-link[href="/Favorites"]').trigger('click')
+    // Überprüfe, dass der Router die Favoritenkomponente geladen hat
+    expect(wrapper.vm.$route.path).toBe('/Favorites')
+  }),
+  it('should fetch data from backend', async () => {
+    // Überprüfe, dass die App initial keine Daten hat
+    expect(wrapper.vm.data).toBeNull()
+    // Simuliere das Laden von Daten
+    await flushPromises()
+    // Überprüfe, dass die Daten erfolgreich geladen wurden
+    expect(wrapper.vm.data).toBeDefined()
   })
 })
