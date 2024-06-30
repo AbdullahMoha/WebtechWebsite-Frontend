@@ -85,29 +85,41 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Carousel -->
-  <div id="carouselExampleIndicators" class="carousel slide fixed-carousel" style="position: fixed; top: 0; right: 0; bottom: 0; width: 300px;">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../assets/dbd.jpg" class="d-block w-100" alt="Slide 1">
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide fixed-carousel" style="position: fixed; top: 0; right: 0; bottom: 0; width: 300px;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../assets/dbd.jpg" class="d-block w-100" alt="Slide 1">
+          <div class="carousel-caption d-none d-md-block" style="color: #fff;">
+            <h5>Dead By Daylight</h5>
+            <p>Videospielverfilmung</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/mgs.webp" class="d-block w-100" alt="Slide 2">
+          <div class="carousel-caption d-none d-md-block" style="color: #fff;">
+            <h5>Metal Gear Solid</h5>
+            <p>Videospielverfilmung</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/mk2.jpg" class="d-block w-100" alt="Slide 3">
+          <div class="carousel-caption d-none d-md-block" style="color: #fff;">
+            <h5>Mortal Kombat 2</h5>
+            <p>Videospielverfilmung</p>
+          </div>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="../assets/mgs.webp" class="d-block w-100" alt="Slide 2">
-      </div>
-      <div class="carousel-item">
-        <img src="../assets/mk2.jpg" class="d-block w-100" alt="Slide 3">
-      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 </template>
 
@@ -176,6 +188,23 @@ body {
   color: #333; /* Beispiel Textfarbe */
 }
 
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 80px; /* Abgerundete Ecken */
+  font-size: 16px; /* Schriftgröße */
+  padding: 10px 20px; /* Innenabstand */
+  width: 70%; /* Schaltflächen nehmen 70% der Breite der Karte ein */
+  box-sizing: border-box; /* Verhindert, dass Padding die Gesamtbreite beeinflusst */
+  margin-top: 5px; /* Abstand zum oberen Inhalt */
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Übergangseffekte */
+  position: relative; /* Relative Positionierung für die Top-Offset */
+  left: 50%; /* Zentrieren */
+  transform: translateX(-50%); /* Korrigieren Sie die Zentrierung */
+  top: -10px; /* 10px nach oben verschieben */
+}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -207,36 +236,70 @@ body {
 }
 
 .card, .fard, .gard {
+  display: flex; /* Flexbox aktivieren */
+  flex-direction: column; /* Vertikale Ausrichtung */
+  justify-content: space-between; /* Platz gleichmäßig verteilen */
   flex: 0 0 auto; /* Verhindert das Schrumpfen der Karten */
   width: 200px; /* Feste Breite der Karten */
   box-sizing: border-box;
   background-color: #ffffff; /* Hintergrundfarbe der Karten */
   color: #333; /* Textfarbe der Karten */
-  border: 1px solid #ccc; /* Randfarbe der Karten */
+  border: 1px solid #383737; /* Randfarbe der Karten */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten der Karten */
 }
 
-.btn-primary {
-  background-color: #007bff; /* Hintergrundfarbe der Schaltfläche */
-  border-color: #007bff; /* Randfarbe der Schaltfläche */
-  color: #fff; /* Textfarbe der Schaltfläche */
+.card-body {
+  display: flex; /* Flexbox aktivieren */
+  flex-direction: column; /* Vertikale Ausrichtung */
+  justify-content: space-between; /* Platz gleichmäßig verteilen */
+  flex-grow: 1; /* Nimmt den verfügbaren Platz ein */
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Hintergrundfarbe der Schaltfläche beim Hover */
-  border-color: #004085; /* Randfarbe der Schaltfläche beim Hover */
+  background-color: #ffd700; /* Neue Hintergrundfarbe beim Hover */
+  border-color: #ffd700; /* Neue Randfarbe beim Hover */
+  color: #383737; /* Neue Textfarbe beim Hover */
 }
 
 .btn-primary {
-  background-color: #ffd700; /* Gelbe Hintergrundfarbe */
-  border-color: #ffd700; /* Gelbe Randfarbe */
-  color: #333; /* Dunkle Textfarbe */
+  background-color: #383737; /* Gelbe Hintergrundfarbe */
+  border-color: #383737; /* Gelbe Randfarbe */
+  color: #ffffff; /* Dunkle Textfarbe */
+}
+
+.btn-secondary {
+  background-color: #f51637;
+  border-color: #383737;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #780c1c; /* Neue Hintergrundfarbe beim Hover */
+  border-color: #780c1c; /* Neue Randfarbe beim Hover */
+  color: #ffffff; /* Neue Textfarbe beim Hover */
 }
 
 .fixed-carousel {
   z-index: 1000; /* Stellt sicher, dass das Carousel über anderen Inhalten liegt */
-  background-color: #fff; /* Hintergrundfarbe des Carousels */
+  background-color: #383737; /* Hintergrundfarbe des Carousels */
   padding: 20px; /* Innenabstand des Carousels */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Schatten des Carousels */
+}
+
+/* Stil für den Carousel-Text */
+.carousel-caption {
+  position: absolute;
+  bottom: 0px; /* Ändern Sie die Position des Textes von unten */
+  left: 50%; /* Zentrieren Sie den Text horizontal */
+  transform: translateX(-50%); /* Zentrieren Sie den Text relativ zum Carousel */
+  text-align: center; /* Zentrieren Sie den Text innerhalb seines Containers */
+  width: 100%; /* Breite des Carousel-Textes */
+  background-color: rgba(255, 255, 255, 0.7); /* Hintergrundfarbe des Textcontainers */
+  padding: 10px; /* Innenabstand des Textcontainers */
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+  color: #333;
 }
 </style>

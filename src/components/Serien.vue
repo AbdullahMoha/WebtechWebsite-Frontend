@@ -24,7 +24,7 @@ export default {
       series: [
         { title: 'Arcane Staffel 2', date: 'November 2024', imgSrc: 'Arcane.jpg' },
         { title: 'Der Herr der Ringe: Die Ringe der Macht', date: '29. August 2024', imgSrc: 'DerHerrDerRingeStaffel2.png' },
-        { title: 'HouseOfTheDragon Staffel 2', date: '21. August 2024', imgSrc: 'HouseOfTheDragon.jpg' },
+        { title: 'House Of The Dragon Staffel 2', date: '21. August 2024', imgSrc: 'HouseOfTheDragon.jpg' },
         { title: 'Squid Game Staffel 2', date: 'Dezember 2024', imgSrc: 'SquidGameStaffel2.jpg' },
         { title: 'Agatha All Along', date: '18. September 2024', imgSrc: 'AgathaAllAlong.jpg' }
       ],
@@ -79,9 +79,26 @@ export default {
 </script>
 
 <style scoped>
-
 h1 {
   margin-bottom: 100px;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 80px; /* Abgerundete Ecken */
+  font-size: 16px; /* Schriftgröße */
+  padding: 10px 20px; /* Innenabstand */
+  width: 70%; /* Schaltflächen nehmen 70% der Breite der Karte ein */
+  box-sizing: border-box; /* Verhindert, dass Padding die Gesamtbreite beeinflusst */
+  margin-bottom: 5px; /* Abstand zum oberen Inhalt */
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Übergangseffekte */
+  position: relative; /* Relative Positionierung für die Top-Offset */
+  left: 50%; /* Zentrieren */
+  transform: translateX(-50%); /* Korrigieren Sie die Zentrierung */
+  top: -10px; /* 10px nach oben verschieben */
+  margin-left: -55px;
 }
 
 .row-container {
@@ -113,25 +130,27 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary {
-  background-color: #ffd700;
-  border-color: #ffd700;
-  color: #333;
+.btn-primary:hover {
+  background-color: #ffd700; /* Neue Hintergrundfarbe beim Hover */
+  border-color: #ffd700; /* Neue Randfarbe beim Hover */
+  color: #383737; /* Neue Textfarbe beim Hover */
 }
 
-.btn-primary:hover {
-  background-color: #f0c500;
-  border-color: #f0c500;
+.btn-primary {
+  background-color: #383737; /* Gelbe Hintergrundfarbe */
+  border-color: #383737; /* Gelbe Randfarbe */
+  color: #ffffff; /* Dunkle Textfarbe */
 }
 
 .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #f51637;
+  border-color: #383737;
   color: #fff;
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #780c1c; /* Neue Hintergrundfarbe beim Hover */
+  border-color: #780c1c; /* Neue Randfarbe beim Hover */
+  color: #ffffff; /* Neue Textfarbe beim Hover */
 }
 </style>

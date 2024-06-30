@@ -38,16 +38,17 @@ export default {
       const index = this.favorites.findIndex(fav => fav.title === movie.title)
       if (index === -1) {
         this.favorites.push(movie)
-        fetch('http://localhost:8080/api/beiträge', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(movie)
-        })
-          .then(response => response.json())
-          .then(data => console.log('Erfolgreich gespeichert:', data))
-          .catch(error => console.error('Fehler beim Speichern:', error))
+        // Hier würde normalerweise der API-Aufruf zum Speichern des Favoriten erfolgen
+        // fetch('http://localhost:8080/api/beiträge', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify(movie)
+        // })
+        // .then(response => response.json())
+        // .then(data => console.log('Erfolgreich gespeichert:', data))
+        // .catch(error => console.error('Fehler beim Speichern:', error))
       } else {
         this.favorites.splice(index, 1)
       }
@@ -88,6 +89,24 @@ h1 {
 body {
   background-color: #f0f0f0;
   color: #333;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 80px; /* Abgerundete Ecken */
+  font-size: 16px; /* Schriftgröße */
+  padding: 10px 20px; /* Innenabstand */
+  width: 70%; /* Schaltflächen nehmen 70% der Breite der Karte ein */
+  box-sizing: border-box; /* Verhindert, dass Padding die Gesamtbreite beeinflusst */
+  margin-bottom: 5px; /* Abstand zum oberen Inhalt */
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Übergangseffekte */
+  position: relative; /* Relative Positionierung für die Top-Offset */
+  left: 50%; /* Zentrieren */
+  transform: translateX(-50%); /* Korrigieren Sie die Zentrierung */
+  top: -10px; /* 10px nach oben verschieben */
+  margin-left: -55px;
 }
 
 .row-container {
