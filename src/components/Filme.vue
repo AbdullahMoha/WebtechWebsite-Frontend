@@ -1,14 +1,18 @@
 <template>
-  <h1>Filme</h1>
-  <div class="fard-container">
-    <div class="fard" v-for="(movie, index) in movies" :key="index">
-      <img :src="getImgSrc(movie.imgSrc)" class="card-img-top" :alt="movie.title">
-      <div class="card-body">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <p class="card-text">{{ movie.date }}</p>
-        <button @click="toggleFavorite(movie)" :class="['btn', isFavorite(movie) ? 'btn-secondary' : 'btn-primary']">
-          {{ isFavorite(movie) ? 'Entfavorisieren' : 'Favorisieren' }}
-        </button>
+  <div>
+    <h1>Filme</h1>
+    <div class="row-container">
+      <div class="fard-container">
+        <div class="fard" v-for="(movie, index) in movies" :key="index">
+          <img :src="getImgSrc(movie.imgSrc)" class="card-img-top" :alt="movie.title">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.date }}</p>
+            <button @click="toggleFavorite(movie)" :class="['btn', isFavorite(movie) ? 'btn-secondary' : 'btn-primary']">
+              {{ isFavorite(movie) ? 'Entfavorisieren' : 'Favorisieren' }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +38,6 @@ export default {
       const index = this.favorites.findIndex(fav => fav.title === movie.title)
       if (index === -1) {
         this.favorites.push(movie)
-        // Hinzufügen der POST-Anfrage, um den Favoriten zu speichern
         fetch('http://localhost:8080/api/beiträge', {
           method: 'POST',
           headers: {
@@ -78,12 +81,27 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin-bottom: 100px;
+}
+
+body {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.row-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
 .fard-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px; /* Abstand zwischen den Karten */
-  justify-content: flex-start; /* Karten nach links ausrichten */
-  margin-left: 0px; /* Abstand von der linken Seite */
+  gap: 50px;
+  justify-content: flex-start;
+  margin-left: 0px;
 }
 
 .card-img-top {
@@ -92,29 +110,34 @@ export default {
 }
 
 .fard {
-  flex: 0 0 auto; /* Verhindert das Schrumpfen der Karten */
-  width: 200px; /* Feste Breite der Karten */
+  flex: 0 0 auto;
+  width: 200px;
   box-sizing: border-box;
-  background-color: #ffffff; /* Hintergrundfarbe der Karten */
-  color: #333; /* Textfarbe der Karten */
-  border: 1px solid #ccc; /* Randfarbe der Karten */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten der Karten */
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary {
-  background-color: #007bff; /* Hintergrundfarbe der Schaltfläche */
-  border-color: #007bff; /* Randfarbe der Schaltfläche */
-  color: #fff; /* Textfarbe der Schaltfläche */
+  background-color: #ffd700;
+  border-color: #ffd700;
+  color: #333;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Hintergrundfarbe der Schaltfläche beim Hover */
-  border-color: #004085; /* Randfarbe der Schaltfläche beim Hover */
+  background-color: #f0c500;
+  border-color: #f0c500;
 }
 
-.btn-primary {
-  background-color: #ffd700; /* Gelbe Hintergrundfarbe */
-  border-color: #ffd700; /* Gelbe Randfarbe */
-  color: #333; /* Dunkle Textfarbe */
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
 }
 </style>
