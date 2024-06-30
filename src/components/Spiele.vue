@@ -34,6 +34,17 @@ export default {
       const index = this.favorites.findIndex(fav => fav.title === game.title)
       if (index === -1) {
         this.favorites.push(game)
+        // Hinzufügen der POST-Anfrage, um den Favoriten zu speichern
+        fetch('http://localhost:8080/api/beiträge', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(game)
+        })
+          .then(response => response.json())
+          .then(data => console.log('Erfolgreich gespeichert:', data))
+          .catch(error => console.error('Fehler beim Speichern:', error))
       } else {
         this.favorites.splice(index, 1)
       }
@@ -67,12 +78,6 @@ export default {
 </script>
 
 <style scoped>
-.row-container {
-  display: flex;
-  justify-content: center; /* Zentriert die Reihen horizontal */
-  margin-bottom: 50px; /* Abstand zwischen den Reihen */
-}
-
 .gard-container {
   display: flex;
   flex-wrap: wrap;
@@ -105,5 +110,11 @@ export default {
 .btn-primary:hover {
   background-color: #0056b3; /* Hintergrundfarbe der Schaltfläche beim Hover */
   border-color: #004085; /* Randfarbe der Schaltfläche beim Hover */
+}
+
+.btn-primary {
+  background-color: #ffd700; /* Gelbe Hintergrundfarbe */
+  border-color: #ffd700; /* Gelbe Randfarbe */
+  color: #333; /* Dunkle Textfarbe */
 }
 </style>

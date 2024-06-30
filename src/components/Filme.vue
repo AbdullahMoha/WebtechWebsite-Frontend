@@ -34,6 +34,17 @@ export default {
       const index = this.favorites.findIndex(fav => fav.title === movie.title)
       if (index === -1) {
         this.favorites.push(movie)
+        // Hinzufügen der POST-Anfrage, um den Favoriten zu speichern
+        fetch('http://localhost:8080/api/beiträge', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(movie)
+        })
+          .then(response => response.json())
+          .then(data => console.log('Erfolgreich gespeichert:', data))
+          .catch(error => console.error('Fehler beim Speichern:', error))
       } else {
         this.favorites.splice(index, 1)
       }
@@ -67,8 +78,7 @@ export default {
 </script>
 
 <style scoped>
-
-.fard-container{
+.fard-container {
   display: flex;
   flex-wrap: wrap;
   gap: 50px; /* Abstand zwischen den Karten */
@@ -81,7 +91,7 @@ export default {
   height: auto;
 }
 
-.fard{
+.fard {
   flex: 0 0 auto; /* Verhindert das Schrumpfen der Karten */
   width: 200px; /* Feste Breite der Karten */
   box-sizing: border-box;
