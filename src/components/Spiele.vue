@@ -33,16 +33,16 @@ export default {
     }
   },
   methods: {
-    toggleFavorite (game) {
-      const index = this.favorites.findIndex(fav => fav.title === game.title)
+    toggleFavorite (movie) {
+      const index = this.favorites.findIndex(fav => fav.title === movie.title)
       if (index === -1) {
-        this.favorites.push(game)
+        this.favorites.push(movie)
         fetch('http://localhost:8080/api/beiträge', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(game)
+          body: JSON.stringify(movie)
         })
           .then(response => response.json())
           .then(data => console.log('Erfolgreich gespeichert:', data))
@@ -52,6 +52,7 @@ export default {
       }
       this.saveFavorites()
     },
+
     isFavorite (game) {
       return this.favorites.some(fav => fav.title === game.title)
     },

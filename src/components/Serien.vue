@@ -32,16 +32,16 @@ export default {
     }
   },
   methods: {
-    toggleFavorite (series) {
-      const index = this.favorites.findIndex(fav => fav.title === series.title)
+    toggleFavorite (movie) {
+      const index = this.favorites.findIndex(fav => fav.title === movie.title)
       if (index === -1) {
-        this.favorites.push(series)
+        this.favorites.push(movie)
         fetch('http://localhost:8080/api/beiträge', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(series)
+          body: JSON.stringify(movie)
         })
           .then(response => response.json())
           .then(data => console.log('Erfolgreich gespeichert:', data))

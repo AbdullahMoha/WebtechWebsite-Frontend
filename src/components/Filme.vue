@@ -38,17 +38,16 @@ export default {
       const index = this.favorites.findIndex(fav => fav.title === movie.title)
       if (index === -1) {
         this.favorites.push(movie)
-        // Hier würde normalerweise der API-Aufruf zum Speichern des Favoriten erfolgen
-        // fetch('http://localhost:8080/api/beiträge', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify(movie)
-        // })
-        // .then(response => response.json())
-        // .then(data => console.log('Erfolgreich gespeichert:', data))
-        // .catch(error => console.error('Fehler beim Speichern:', error))
+        fetch('http://localhost:8080/api/beiträge', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(movie)
+        })
+          .then(response => response.json())
+          .then(data => console.log('Erfolgreich gespeichert:', data))
+          .catch(error => console.error('Fehler beim Speichern:', error))
       } else {
         this.favorites.splice(index, 1)
       }
