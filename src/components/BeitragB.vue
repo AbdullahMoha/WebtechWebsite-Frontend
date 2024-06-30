@@ -86,6 +86,29 @@
       </div>
     </div>
   </div>
+
+  <!-- Carousel -->
+  <div id="carouselExampleIndicators" class="carousel slide fixed-carousel" style="position: fixed; top: 0; right: 0; bottom: 0; width: 300px;">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../assets/dbd.jpg" class="d-block w-100" alt="Slide 1">
+      </div>
+      <div class="carousel-item">
+        <img src="../assets/mgs.webp" class="d-block w-100" alt="Slide 2">
+      </div>
+      <div class="carousel-item">
+        <img src="../assets/mk2.jpg" class="d-block w-100" alt="Slide 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -208,5 +231,12 @@ body {
   background-color: #ffd700; /* Gelbe Hintergrundfarbe */
   border-color: #ffd700; /* Gelbe Randfarbe */
   color: #333; /* Dunkle Textfarbe */
+}
+
+.fixed-carousel {
+  z-index: 1000; /* Stellt sicher, dass das Carousel über anderen Inhalten liegt */
+  background-color: #fff; /* Hintergrundfarbe des Carousels */
+  padding: 20px; /* Innenabstand des Carousels */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Schatten des Carousels */
 }
 </style>

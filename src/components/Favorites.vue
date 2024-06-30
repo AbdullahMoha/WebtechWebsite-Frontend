@@ -22,7 +22,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Entfernen?</h5>
+            <h5 class="modal-title">Beitrag entfernen</h5>
             <button type="button" class="btn-close" @click="hideModal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -139,12 +139,12 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #780c1c;
   border-color: #004085;
 }
 
 .btn-primary {
-  background-color: #ffd700;
+  background-color: #f51637;
   border-color: #ffd700;
   color: #333;
 }
